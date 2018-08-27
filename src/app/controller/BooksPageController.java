@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import database.DAO.BookDAO;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
@@ -19,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.util.Callback;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class BooksPageController implements Initializable, ControlledScreen {
@@ -35,8 +37,8 @@ public class BooksPageController implements Initializable, ControlledScreen {
 
     //Define the image cell
     class ButtonCell extends TreeTableCell<Book, String> {
-        Image image2;
-        ImageView imageView2;
+//        Image image2;
+//        ImageView imageView2;
 //        ButtonCell(){
 //
 //            cellButton.setOnAction(new EventHandler<ActionEvent>(){
@@ -52,26 +54,26 @@ public class BooksPageController implements Initializable, ControlledScreen {
         //Display button if the row is not empty
         @Override
         protected void updateItem(String t, boolean empty) {
-            super.updateItem(t, empty);
-            if (t == "" || t == null) {
-                image2 = new Image(getClass().getResource("/images/add.png").toExternalForm());
-            } else {
-                image2 = new Image(getClass().getResource(t).toExternalForm());
-            }
-            if (!empty) {
-                imageView2 = new ImageView(image2);
-                imageView2.setFitHeight(15);
-                imageView2.setFitWidth(15);
-                setGraphic(imageView2);
-            }
+//            super.updateItem(t, empty);
+//            if (t == "" || t == null) {
+//                image2 = new Image(getClass().getResource("/images/add.png").toExternalForm());
+//            } else {
+//                image2 = new Image(getClass().getResource(t).toExternalForm());
+//            }
+//            if (!empty) {
+//                imageView2 = new ImageView(image2);
+//                imageView2.setFitHeight(15);
+//                imageView2.setFitWidth(15);
+//                setGraphic(imageView2);
+//            }
         }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        ObservableList<Book> users = FXCollections.observableArrayList();
-        users.add(new Book("/images/book-5.png","Oskar i Pani Różat", "Eric-Emmanuel Schmitt", "12.07.2006", "", ""));
+//        ObservableList<Book> users = FXCollections.observableArrayList();
+//        users.add(new Book("/images/book-5.png","Oskar i Pani Różat", "Eric-Emmanuel Schmitt", "12.07.2006", "", ""));
 //        users.add(new Book("Harry Potter i Komnata Tajemnic", "Joanne K. Rowling", "04.05.2006", "", 4, "Fantastyka"));
 //        users.add(new Book("Żaba", "Małgorzata Musierowicz", "17.12.2012", "/images/book-5.png", 2, "Dramat"));
 //        users.add(new Book("Harry Potter i Więzień Azkabanu", "Joanne K. Rowling", "17.01.2016", "", 3, "Fantastyka"));
@@ -84,12 +86,17 @@ public class BooksPageController implements Initializable, ControlledScreen {
 //        users.add(new Book("Harry Potter i Książę Półkrwi", "Joanne K. Rowling", "03.03.2018", "", 4, "Fantastyka"));
 //        users.add(new Book("Falbanki", "Krystyna Siesicka", "15.03.2013", "", 2, "Obyczajowa"));
 //        users.add(new Book("Moja droga Aleksandra", "Krystyna Siesicka", "", "", 3, "Obyczajowa"));
-        users.add(new Book("", "Pamiętaj, że tam są schody", "Krystyna Siesicka", "", "", ""));
-        users.add(new Book("", "W stronę tamtego lasu", "Krystyna Siesicka", "", "", ""));
-        users.add(new Book("", "Mitologia", "Jan Parandowski", "", "", ""));
-        users.add(new Book("" , "Walerio wróć", "Krystyna Siesickae", "", "", ""));
+//        users.add(new Book("", "Pamiętaj, że tam są schody", "Krystyna Siesicka", "", "", ""));
+//        users.add(new Book("", "W stronę tamtego lasu", "Krystyna Siesicka", "", "", ""));
+//        users.add(new Book("", "Mitologia", "Jan Parandowski", "", "", ""));
+//        users.add(new Book("" , "Walerio wróć", "Krystyna Siesickae", "", "", ""));
 
-
+        ObservableList<Book> users = null;
+        try {
+            users = BookDAO.searchBooks();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         final TreeItem<Book> root = new RecursiveTreeItem<>(users, RecursiveTreeObject::getChildren);
 
 
@@ -144,7 +151,7 @@ public class BooksPageController implements Initializable, ControlledScreen {
 
     }
 
-    class Book extends RecursiveTreeObject<Book> {
+    public static class Book extends RecursiveTreeObject<Book> {
         StringProperty rate;
         StringProperty title;
         StringProperty author;

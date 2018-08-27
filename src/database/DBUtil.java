@@ -11,7 +11,7 @@ public class DBUtil {
 
     public static void connect() throws SQLException {
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
+            connection = DriverManager.getConnection(connectionPath);
         } catch (SQLException e) {
             System.out.println("Connection Failed!");
             e.printStackTrace();
@@ -30,7 +30,7 @@ public class DBUtil {
         }
     }
 
-    public ResultSet executeQuery(String queryStmt) throws SQLException {
+    public static ResultSet executeQuery(String queryStmt) throws SQLException {
         Statement stmt = null;
         ResultSet resultSet = null;
         CachedRowSetImpl cachedRowSetImpl = null;
