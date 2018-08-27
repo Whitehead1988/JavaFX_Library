@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="placeHolder" prefHeight="689.0" prefWidth="1151.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.SettingsPageController">
+   <children>
+      <JFXCheckBox layoutX="94.0" layoutY="235.0" text="Display book cover" />
+      <JFXSlider layoutX="199.0" layoutY="433.0" />
+      <JFXToggleButton layoutX="626.0" layoutY="229.0" text="Offline Mode" toggleColor="#0f9d58" toggleLineColor="#999999" />
+      <JFXRadioButton layoutX="703.0" layoutY="420.0" text="Dark" />
+      <Separator layoutX="522.0" layoutY="54.0" orientation="VERTICAL" prefHeight="246.0" prefWidth="6.0" />
+      <Separator layoutX="519.0" layoutY="345.0" orientation="VERTICAL" prefHeight="280.0" prefWidth="6.0" />
+      <JFXToggleButton layoutX="624.0" layoutY="128.0" text="Sync with database" toggleColor="#0f9d58" toggleLineColor="#999999" />
+      <JFXToggleButton layoutX="624.0" layoutY="177.0" text="Show advices" toggleColor="#0f9d58" toggleLineColor="#999999" />
+      <JFXRadioButton layoutX="852.0" layoutY="420.0" text="Standard" />
+      <JFXRadioButton layoutX="703.0" layoutY="468.0" text="Horizontal" />
+      <JFXRadioButton layoutX="852.0" layoutY="468.0" text="Vertical" />
+      <JFXSlider layoutX="200.0" layoutY="496.0" />
+      <JFXCheckBox layoutX="93.0" layoutY="197.0" text="Keep session alive" />
+      <JFXCheckBox layoutX="93.0" layoutY="157.0" prefHeight="25.0" prefWidth="127.0" text="Night mode" />
+      <JFXCheckBox layoutX="93.0" layoutY="119.0" text="Calendar" />
+      <Label layoutX="62.0" layoutY="428.0" text="Music volume">
+         <font>
+            <Font name="Serif Regular" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="62.0" layoutY="491.0" text="Effects volume">
+         <font>
+            <Font name="Serif Regular" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="156.0" layoutY="358.0" text="Sound options">
+         <font>
+            <Font name="Serif Regular" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="137.0" layoutY="67.0" text="General">
+         <font>
+            <Font name="Serif Regular" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="637.0" layoutY="67.0" text="Functionality and networking">
+         <font>
+            <Font name="Serif Regular" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="732.0" layoutY="358.0" text="Display options">
+         <font>
+            <Font name="Serif Regular" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="553.0" layoutY="419.0" text="Background color">
+         <font>
+            <Font name="Serif Regular" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="556.0" layoutY="466.0" text="Menu">
+         <font>
+            <Font name="Serif Regular" size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

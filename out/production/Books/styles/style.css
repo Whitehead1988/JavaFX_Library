@@ -1,0 +1,34 @@
+#btn{
+    -fx-background-color: red;
+}
+
+#btn:hover{
+    -fx-background-color: black;
+    -fx-border-color: #1e24ff;
+    -fx-arc-width: 5px;
+}
+
+#home:hover{
+    -fx-background-color: lightgray;
+    /*-fx-graphic: "images/User_icon_BLACK-01.png";*/
+}
+
+#books:hover{
+    -fx-background-color: lightgray;
+}
+
+#search:hover{
+    -fx-background-color: lightgray;
+}
+
+#add:hover{
+    -fx-background-color: lightgray;
+}
+
+#settings:hover{
+    -fx-background-color: lightgray;
+}
+
+#about:hover{
+    -fx-background-color: lightgray;
+}

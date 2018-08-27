@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="placeHolder" prefHeight="715.0" prefWidth="1182.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.BooksPageController">
+   <children>
+      <JFXTreeTableView fx:id="treeView" layoutX="7.0" layoutY="66.0" prefHeight="500.0" prefWidth="1100.0" />
+      <JFXTextField labelFloat="true" layoutX="884.0" layoutY="22.0" prefHeight="31.0" prefWidth="224.0" promptText="Search..." unFocusColor="#838181">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+   </children>
+</AnchorPane>

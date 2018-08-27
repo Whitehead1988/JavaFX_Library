@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="placeHolder" prefHeight="715.0" prefWidth="1182.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.AddBookPageController">
+   <children>
+      <JFXTextField fx:id="title" labelFloat="true" layoutX="245.0" layoutY="127.0" prefHeight="25.0" prefWidth="377.0" promptText="Title" />
+      <JFXTextField fx:id="author" labelFloat="true" layoutX="245.0" layoutY="192.0" prefHeight="25.0" prefWidth="377.0" promptText="Author" />
+      <JFXTextField fx:id="type" labelFloat="true" layoutX="245.0" layoutY="333.0" prefHeight="25.0" prefWidth="377.0" promptText="Type" />
+      <JFXDatePicker fx:id="date" editable="false" layoutX="245.0" layoutY="262.0" prefHeight="25.0" prefWidth="377.0" promptText="Finished date" />
+      <JFXTextField fx:id="description" layoutX="245.0" layoutY="409.0" prefHeight="25.0" prefWidth="377.0" promptText="Description" />
+      <JFXComboBox fx:id="rate" layoutX="472.0" layoutY="499.0" prefWidth="150.0" promptText="Rate" />
+      <Label layoutX="245.0" layoutY="60.0" prefHeight="41.0" prefWidth="377.0" text="Add book to repository">
+         <font>
+            <Font name="Serif Regular" size="22.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="add" layoutX="767.0" layoutY="55.0" mnemonicParsing="false" onAction="#addBook" prefHeight="51.0" prefWidth="127.0" style="-fx-background-color: gray; -fx-background-radius: 20px; -fx-border-color: black; -fx-border-radius: 20px;" text="Add">
+         <effect>
+            <InnerShadow />
+         </effect>
+      </JFXButton>
+   </children>
+</AnchorPane>

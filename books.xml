@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="books" default="all">
+  
+  
+  <property file="books.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.egg"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+    <include name="*.swc"/>
+    <include name="*.war"/>
+    <include name="*.zip"/>
+    <include name="*.ane"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="jre/lib/charsets.jar"/>
+      <include name="jre/lib/deploy.jar"/>
+      <include name="jre/lib/ext/access-bridge-64.jar"/>
+      <include name="jre/lib/ext/cldrdata.jar"/>
+      <include name="jre/lib/ext/dnsns.jar"/>
+      <include name="jre/lib/ext/jaccess.jar"/>
+      <include name="jre/lib/ext/jfxrt.jar"/>
+      <include name="jre/lib/ext/localedata.jar"/>
+      <include name="jre/lib/ext/nashorn.jar"/>
+      <include name="jre/lib/ext/sunec.jar"/>
+      <include name="jre/lib/ext/sunjce_provider.jar"/>
+      <include name="jre/lib/ext/sunmscapi.jar"/>
+      <include name="jre/lib/ext/sunpkcs11.jar"/>
+      <include name="jre/lib/ext/zipfs.jar"/>
+      <include name="jre/lib/javaws.jar"/>
+      <include name="jre/lib/jce.jar"/>
+      <include name="jre/lib/jfr.jar"/>
+      <include name="jre/lib/jfxswt.jar"/>
+      <include name="jre/lib/jsse.jar"/>
+      <include name="jre/lib/management-agent.jar"/>
+      <include name="jre/lib/plugin.jar"/>
+      <include name="jre/lib/resources.jar"/>
+      <include name="jre/lib/rt.jar"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.jfoenix-8.0.4.classpath">
+    <pathelement location="${basedir}/../../Downloads/jfoenix-8.0.4.jar"/>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <fileset dir="${javac2.home}">
+      <include name="javac2.jar"/>
+      <include name="jdom.jar"/>
+      <include name="asm-all*.jar"/>
+      <include name="jgoodies-forms.jar"/>
+    </fileset>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  
+  <!-- Module Books -->
+  
+  <dirname property="module.books.basedir" file="${ant.file}"/>
+  
+  
+  <property name="module.jdk.home.books" value="${jdk.home.1.8}"/>
+  <property name="module.jdk.bin.books" value="${jdk.bin.1.8}"/>
+  <property name="module.jdk.classpath.books" value="jdk.classpath.1.8"/>
+  
+  <property name="compiler.args.books" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="books.output.dir" value="${module.books.basedir}/out/production/Books"/>
+  <property name="books.testoutput.dir" value="${module.books.basedir}/out/test/Books"/>
+  
+  <path id="books.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="books.module.production.classpath">
+    <path refid="${module.jdk.classpath.books}"/>
+    <path refid="library.jfoenix-8.0.4.classpath"/>
+    <pathelement location="${basedir}/../../Downloads/sqlite-jdbc-3.23.1.jar"/>
+  </path>
+  
+  <path id="books.runtime.production.module.classpath">
+    <pathelement location="${books.output.dir}"/>
+    <path refid="library.jfoenix-8.0.4.classpath"/>
+    <pathelement location="${basedir}/../../Downloads/sqlite-jdbc-3.23.1.jar"/>
+  </path>
+  
+  <path id="books.module.classpath">
+    <path refid="${module.jdk.classpath.books}"/>
+    <pathelement location="${books.output.dir}"/>
+    <path refid="library.jfoenix-8.0.4.classpath"/>
+    <pathelement location="${basedir}/../../Downloads/sqlite-jdbc-3.23.1.jar"/>
+  </path>
+  
+  <path id="books.runtime.module.classpath">
+    <pathelement location="${books.testoutput.dir}"/>
+    <pathelement location="${books.output.dir}"/>
+    <path refid="library.jfoenix-8.0.4.classpath"/>
+    <pathelement location="${basedir}/../../Downloads/sqlite-jdbc-3.23.1.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.books">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.books">
+    <patternset refid="excluded.from.module.books"/>
+  </patternset>
+  
+  <path id="books.module.sourcepath">
+    <dirset dir="${module.books.basedir}">
+      <include name="src"/>
+      <include name="src/Resources"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.books" depends="compile.module.books.production,compile.module.books.tests" description="Compile module Books"/>
+  
+  <target name="compile.module.books.production" depends="register.custom.compilers" description="Compile module Books; production classes">
+    <mkdir dir="${books.output.dir}"/>
+    <javac2 destdir="${books.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.books}/javac">
+      <compilerarg line="${compiler.args.books}"/>
+      <bootclasspath refid="books.module.bootclasspath"/>
+      <classpath refid="books.module.production.classpath"/>
+      <src refid="books.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.books"/>
+    </javac2>
+    
+    <copy todir="${books.output.dir}">
+      <fileset dir="${module.books.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.books.basedir}/src/Resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.books.tests" depends="register.custom.compilers,compile.module.books.production" description="compile module Books; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.books" description="cleanup module">
+    <delete dir="${books.output.dir}"/>
+    <delete dir="${books.testoutput.dir}"/>
+  </target>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.books, clean.artifact.books" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.books" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.books" value="${basedir}/out/artifacts/Books"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="artifact.temp.output.Books" value="${artifacts.temp.dir}/Books.jar"/>
+    <taskdef resource="com/sun/javafx/tools/ant/antlib.xml" uri="javafx:com.sun.javafx.tools.ant" classpath="${jdk.home.1.8}/lib/ant-javafx.jar"/>
+  </target>
+  
+  <target name="clean.artifact.books" description="clean Books artifact output">
+    <delete dir="${artifact.output.books}"/>
+  </target>
+  
+  <target name="artifact.books" depends="init.artifacts, compile.module.books" description="Build &#39;Books&#39; artifact" xmlns:fx="javafx:com.sun.javafx.tools.ant">
+    <mkdir dir="${artifact.output.books}"/>
+    <copy todir="${artifact.temp.output.Books}">
+      <fileset dir="${books.output.dir}"/>
+    </copy>
+    <fx:fileset id="all_but_Books" dir="${artifact.temp.output.Books}" includes="**/*.jar">
+      <exclude name="Books.jar"/>
+    </fx:fileset>
+    <fx:fileset id="all_Books" dir="${artifact.temp.output.Books}" includes="**/*.jar"/>
+    <fx:application id="Books_id" name="Books" mainClass="sample.Main" version="1.0.0"/>
+    <fx:jar destfile="${artifact.temp.output.Books}/Books.jar">
+      <fx:application refid="Books_id"/>
+      <fileset dir="${artifact.temp.output.Books}" excludes="**/*.jar"/>
+      <fx:resources>
+        <fx:fileset refid="all_but_Books"/>
+      </fx:resources>
+      <manifest>
+        <attribute name="Implementation-Title" value="testJar"/>
+        <attribute name="Implementation-Version" value="1.0.0"/>
+        <attribute name="Implementation-Vendor" value=""/>
+      </manifest>
+    </fx:jar>
+    <fx:deploy width="600" height="400" updatemode="background" outdir="${artifact.temp.output.Books}/deploy" outfile="Books">
+      <fx:application refid="Books_id"/>
+      <fx:info title="testJar"/>
+      <fx:resources>
+        <fx:fileset refid="all_Books"/>
+      </fx:resources>
+    </fx:deploy>
+    <copy todir="${artifact.output.books}">
+      <fileset dir="${artifact.temp.output.Books}/deploy"/>
+    </copy>
+    <delete includeemptydirs="true">
+      <fileset dir="${artifact.temp.output.Books}"/>
+    </delete>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.books" description="Build all artifacts">
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>
