@@ -56,14 +56,13 @@ public class AddBookPageController implements Initializable, ControlledScreen {
 
     @FXML
     private void addBook(ActionEvent event) {
-
         Book book = new Book();
         book.setAuthor(author.getText());
+        book.setDate(date.getValue());
         book.setDescription(description.getText());
         book.setRate(rate.getValue().toString());
         book.setTitle(title.getText());
         book.setType(type.getText());
-
         BookDAO.insertBook(book);
     }
 }

@@ -4,14 +4,14 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class Book {
 
     private StringProperty rate;
     private StringProperty title;
     private StringProperty author;
-    private SimpleObjectProperty<Date> date;
+    private SimpleObjectProperty<LocalDate> date;
     private StringProperty description;
     private StringProperty type;
 
@@ -60,15 +60,15 @@ public class Book {
         this.author.set(author);
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date.get();
     }
 
-    public SimpleObjectProperty<Date> dateProperty() {
+    public SimpleObjectProperty<LocalDate> dateProperty() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date.set(date);
     }
 

@@ -12,7 +12,7 @@ public class BookDAO {
                 "(RATE, AUTHOR, TYPE, DESCRIPTION, TITLE, date)\n" +
                 "values\n" +
                 "(\"" + book.getRate() + "\", \""+ book.getAuthor() +"\", \""+ book.getType() +"\", \""+ book.getDescription() +
-                "\", \""+ book.getTitle() +"\", \"SYSDATE\");";
+                "\", \""+ book.getTitle() +"\", \""+ book.getDate() +"\");";
         try {
             DBUtil.executeUpdate(quertyStmt);
         } catch (SQLException e) {
