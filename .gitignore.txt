@@ -1,2 +1,2 @@
-.idea/
-Books.iml
+/.idea/
+/Books.iml
