@@ -9,7 +9,7 @@ public class DBUtil {
     private static final String connectionPath = "jdbc:sqlite:sample.db";
     private static Connection connection = null;
 
-    public void connect() throws SQLException {
+    public static void connect() throws SQLException {
         try {
             connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
         } catch (SQLException e) {
@@ -19,7 +19,7 @@ public class DBUtil {
         }
     }
 
-    public void disconnect() throws SQLException {
+    public static void disconnect() throws SQLException {
         try {
             if(connection != null && connection.isClosed()==false){
                 connection.close();
@@ -55,7 +55,7 @@ public class DBUtil {
         return cachedRowSetImpl;
     }
 
-    public void executeUpdate(String queryStmt) throws SQLException {
+    public static void executeUpdate(String queryStmt) throws SQLException {
         Statement stmt =null;
         try {
             connect();

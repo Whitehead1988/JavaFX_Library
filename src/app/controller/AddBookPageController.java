@@ -3,6 +3,8 @@ package app.controller;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
+import database.DAO.Book;
+import database.DAO.BookDAO;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -55,13 +57,13 @@ public class AddBookPageController implements Initializable, ControlledScreen {
     @FXML
     private void addBook(ActionEvent event) {
 
-        title.getText();
-        author.getText();
-        LocalDate localDate = date.getValue();
-        Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
-        Date date = Date.from(instant);
-        type.getText();
-        description.getText();
-        rate.getValue();
+        Book book = new Book();
+        book.setAuthor(author.getText());
+        book.setDescription(description.getText());
+        book.setRate(rate.getValue().toString());
+        book.setTitle(title.getText());
+        book.setType(type.getText());
+
+        BookDAO.insertBook(book);
     }
 }
